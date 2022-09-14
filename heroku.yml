@@ -1,0 +1,8 @@
+build:
+  docker-compose:
+    web: docker-compose.yml
+run:
+  web: docker-compose.yml up -d
+release:
+  image: web
+  command: docker-compose.yml up -d
