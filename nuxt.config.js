@@ -38,12 +38,12 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/apollo","@nuxt/content","bootstrap-vue/nuxt"],
+  modules: ["@nuxtjs/apollo", "@nuxt/content", "bootstrap-vue/nuxt"],
 
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: "https://3000-pedrobzz-airbanktable-2ozyg2k95gn.ws-us65.gitpod.io/api"
+        httpEndpoint: "localhost:3000/api",
       },
     },
   },

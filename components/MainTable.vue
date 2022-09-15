@@ -1,6 +1,6 @@
 <script lang="ts">
 /**
- * Main table component
+ * Main table component for transactions
  */
 import moment from "moment";
 export default {
