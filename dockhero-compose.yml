@@ -15,19 +15,6 @@ services:
       - sai
     volumes:
       - rethink-data:/data
-  app:
-    build: .
-    container_name: app
-    ports:
-      - "3000:3000"
-    networks:
-      - sai
-    links:
-      - db
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/airtable?schema=public
-    depends_on:
-      - db
 networks:
   sai:
     driver: bridge
