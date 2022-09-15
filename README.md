@@ -20,4 +20,13 @@ Nuxt, Vuejs, boostrap
 Just 1 step its enough to run environment.
 <code>yarn run deploy</code>
 
+
+## Deployed Application
+
+[LIVE DEMO](https://backend-airbank.herokuapp.com/)
+
+## Deployed Api 
+
+[Backend](backend-airbank.herokuapp.com/api)
+
 ![Captura de Tela 2022-09-15 às 03 56 43](https://user-images.githubusercontent.com/9882822/190335846-55e3253c-3a5c-42b0-9c80-ff45b1cffe3e.png)
