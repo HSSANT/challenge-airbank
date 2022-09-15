@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "setup": "docker-compose up -d && npx prisma migrate dev --name \"init\" && npx prisma migrate deploy && npx prisma db seed",
+    "deploy": "npx prisma migrate dev --name \"init\" && npx prisma migrate deploy && npx prisma db seed && yarn dev",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
