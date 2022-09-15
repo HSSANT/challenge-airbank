@@ -10,6 +10,6 @@ COPY package.json yarn.lock tsconfig.json ./
 
 COPY . .
 
-CMD  ["sh", "-c", "yarn i && npx prisma generate && yarn deploy"]
+CMD  ["sh", "-c", "yarn && npx prisma generate && yarn deploy"]
 
 EXPOSE 3000
