@@ -2,12 +2,12 @@
 /**
  * Main table component
  */
-import moment from 'moment';
+import moment from "moment";
 export default {
   props: ["transactions", "loading"],
   data() {
     return {
-      tableData: this.transactions,
+      tableData: (this as any).transactions,
 
       title: "Transactions",
       items: [
@@ -66,60 +66,70 @@ export default {
      * Total no. of records
      */
     rows() {
-      return this.transactions.length;
+      return (this as any).transactions.length;
     },
   },
   mounted() {
     // Set the initial number of items
-    this.totalRows = this.items.length;
+    (this as any).totalRows = (this as any).items.length;
   },
   methods: {
     /**
      * Search the table data with search input
      */
-    onFiltered(filteredItems:any) {
+    onFiltered(filteredItems: any) {
       // Trigger pagination to update the number of buttons/pages due to filtering
-      this.totalRows = filteredItems.length;
-      this.currentPage = 1;
+      (this as any).totalRows = filteredItems.length;
+      (this as any).currentPage = 1;
     },
-    formatDate(data:any) {
-      return moment(data).format('DD/MM/YY')
+    formatDate(data: any) {
+      return moment(data).format("DD/MM/YY");
     },
     onRowSelected(items) {
-      this.$router.push(`/transactions/${items[0].id}`)
-      this.$refs.selectableTable.clearSelected();
+      (this as any).$router.push(`/transactions/${items[0].id}`);
+      (this as any).$refs.selectableTable.clearSelected();
     },
-    toCurrency(value:number,currency:string) {
-      let locale = '';
+    toCurrency(value: number, currency: string) {
+      let locale = "";
       switch (currency) {
-      case 'GBP':
-        locale = 'en-GB';
-      case 'EUR':
-        locale = 'de-DE';
-      case 'USD':
-        locale = 'en-US';
-      default:
-         locale = 'de-DE'
+        case "GBP":
+          locale = "en-GB";
+        case "EUR":
+          locale = "de-DE";
+        case "USD":
+          locale = "en-US";
+        default:
+          locale = "de-DE";
       }
       var formatter = new Intl.NumberFormat(locale, {
         style: "currency",
-        currency: currency
+        currency: currency,
       });
       return formatter.format(value);
     },
-    isTooDark(hexcolor:string){
-      var r = parseInt(hexcolor.substr(1,2),16);
-      var g = parseInt(hexcolor.substr(3,2),16);
-      var b = parseInt(hexcolor.substr(4,2),16);
-      var yiq = ((r*299)+(g*587)+(b*114))/1000;
-      return (yiq < 92) ? true : false;
+    isTooDark(hexcolor: string) {
+      var r = parseInt(hexcolor.substr(1, 2), 16);
+      var g = parseInt(hexcolor.substr(3, 2), 16);
+      var b = parseInt(hexcolor.substr(4, 2), 16);
+      var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+      return yiq < 92 ? true : false;
     },
     renderCategory(transaction: any) {
       if (transaction.category) {
         return `
             <span
               class="inline-block py-2 px-4 rounded-md font-medium"
-              style="color:${this.isTooDark(transaction.category.color ? ('#' + transaction.category.color) : '#dfdfdf') ? 'white' : '' };background-color: #${transaction.category.color ? transaction.category.color : 'dfdfdf'}"
+              style="color:${
+                this.isTooDark(
+                  transaction.category.color
+                    ? "#" + transaction.category.color
+                    : "#dfdfdf"
+                )
+                  ? "white"
+                  : ""
+              };background-color: #${
+          transaction.category.color ? transaction.category.color : "dfdfdf"
+        }"
               > 
               ${transaction.category.name}
             </span>`;

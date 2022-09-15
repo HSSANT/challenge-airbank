@@ -24,6 +24,7 @@ services:
       - sai
     links:
       - db
+    command: ["yarn", "run", "dev"]
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/airtable?schema=public
     depends_on:
