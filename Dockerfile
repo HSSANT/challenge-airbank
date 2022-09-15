@@ -8,8 +8,8 @@ WORKDIR /app
 
 COPY package.json yarn.lock tsconfig.json ./
 
-RUN yarn install
-
 COPY . .
 
-CMD  ["sh", "-c", "npx prisma generate && yarn deploy && yarn dev"]
+CMD  ["sh", "-c", "yarn i && npx prisma generate && yarn deploy"]
+
+EXPOSE 3000
